@@ -5,7 +5,6 @@ const Hero = ({title="Become a React Dev ",subtitle="Find the React Job that thi
         <div className="text-center">
           <h1 className="text-4xl font-extrabold text-white sm:text-5xl md:text-6xl">
            {title}
-
           </h1>
           <p className="my-4 text-xl text-white">
            {subtitle}

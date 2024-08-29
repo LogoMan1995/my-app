@@ -1,6 +1,26 @@
 import { NavLink } from "react-router-dom";
 import logo from "../assets/images/logo.png";
 
+const LinkData = [
+  {
+    to: "/",
+    text: "Home",
+  },
+  {
+    to: "/jobs",
+    text: "Jobs",
+  },
+  {
+    to: "/add-job",
+    text: "Add Job",
+  },
+  {
+    to: "/test_page",
+    text: "test page",
+  },
+];
+
+
 const Navbar = () => {
   const linkClass = ({ isActive }) =>
     isActive
@@ -20,15 +40,14 @@ const Navbar = () => {
             </NavLink>
             <div className="md:ml-auto">
               <div className="flex space-x-2">
-                <NavLink to="/" className={linkClass}>
-                  Home
-                </NavLink>
-                <NavLink to="/jobs" className={linkClass}>
-                  Jobs
-                </NavLink>
-                <NavLink to="/add-job" className={linkClass}>
-                  Add Job
-                </NavLink>
+                {LinkData.map((link) => (
+                  <NavigationLink
+                    key={link.text}
+                    to={link.to}
+                    className={linkClass}>
+                    {link.text}
+                  </NavigationLink>
+                ))}
               </div>
             </div>
           </div>
@@ -37,4 +56,17 @@ const Navbar = () => {
     </nav>
   );
 };
+
+
+const NavigationLink = ({ to, children, className }) => {
+  return (
+    <NavLink
+      to={to}
+      className={`${className} bg-indigo-900`}>
+      {children}
+    </NavLink>
+  );
+};
+
+
 export default Navbar;
